@@ -26,8 +26,10 @@ module tb_rotating_square;
     defparam dut.counter.N = 3; 
 
     // clk generation
-    always #5 clk = ~clk; 
-
+    initial begin
+        clk = 0;
+        forever #5 clk = ~clk;
+    end
     initial begin
         clk = 0;
         rst = 1;
@@ -56,7 +58,7 @@ module tb_rotating_square;
         en = 1;
         #100;
 
-        $stop;
+        $finish;
     end
       
 endmodule
